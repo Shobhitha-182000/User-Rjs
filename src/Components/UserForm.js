@@ -7,26 +7,25 @@ const UserForm = (props) => {
   const [isEmpty, setEmpty] = useState(false);
 
   const nameHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setEmpty(true);
-    }
+    
     setName(event.target.value);
   };
 
   const ageHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setEmpty(true);
-    }
-    if(event.target.value>0){
+    
+      
     setAge(event.target.value);
-    }else{
-        return window.alert("enter a valid age");
-    }
+    
   };
 
   const saveUserHandler = (event) => {
     event.preventDefault();
-
+    if(enterName.trim().length==0 || enterAge.trim().length){
+      return window.alert("enter a name and age");
+    }
+    if(enterAge<1){
+      return window.alert("enter a valid age");
+    }
     const user = {
       name: enterName,
       age: enterAge,
